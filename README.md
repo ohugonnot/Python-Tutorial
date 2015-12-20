@@ -28,6 +28,8 @@
     return 
     
   name(arg2 = 2, arg1 = 1)
+  
+  def fonction_inconnue(nom, prenom, *commentaires): # * pour un nombre d'arguments variable
 ````
 
 ## Les exeptions et assertions
@@ -75,7 +77,7 @@
 * __String Methode()__
   * s.__lower()__ / s.__upper()__         
   *-- returns the lowercase or uppercase version of the string*
-  * s.__strip()__      
+  * s.__strip()__       
   *-- returns a string with whitespace removed from the start and end**
   * s.__isalpha()__ / s.__isdigit()__ / s.__isspace()__ ...            
   *-- tests if all the string chars are in the various character classes*
@@ -93,11 +95,12 @@
 ### Class Liste
 
 <p align="center">   
-<img src='https://developers.google.com/edu/python/images/list1.png' alt='String Class' />
+<img src='https://developers.google.com/edu/python/images/list1.png' alt='List Class' />
 </p>
 
 ````
   ma_liste = [1, 2, 3, 4, 5] # Une liste avec cinq objets
+  tuple = (1,2,3,4,5)
   
   squares = [1, 4, 9, 16]
   sum = 0
@@ -108,30 +111,74 @@
   list = ['larry', 'curly', 'moe']
   if 'curly' in list:
     print 'yay'
+    
+  >>> qtt_a_retirer = 7 # On retire chaque semaine 7 fruits de chaque sorte
+  >>> fruits_stockes = [15, 3, 18, 21] # Par exemple 15 pommes, 3 melons...
+  >>> [nb_fruits-qtt_a_retirer for nb_fruits in fruits_stockes if nb_fruits>qtt_a_retirer]
+  [8, 11, 14]
+  
+  >>> inventaire = [
+  ...     ("pommes", 22),
+  ...     ("melons", 4),
+  ...     ("poires", 18),
+  ...     ("fraises", 76),
+  ...     ("prunes", 51),
+  ... ]
+  >>>
+  # On change le sens de l'inventaire, la quantité avant le nom
+  inventaire_inverse = [(qtt, nom_fruit) for nom_fruit,qtt in inventaire]
+  # On n'a plus qu'à trier dans l'ordre décroissant l'inventaire inversé
+  # On reconstitue l'inventaire trié
+  inventaire = [(nom_fruit, qtt) for qtt,nom_fruit in sorted(inventaire_inverse, \reverse=True)]
 ````
 
 * __List Methode()__
-  * list.__append(__ *elem* __)__     
+  * list.__append(__ *elem* __)__         
   *-- adds a single element to the end of the list. Common error: does not return the new list, just modifies the original.*
-  * list.__insert(__ *index, elem* __)__     
+  * list.__insert(__ *index, elem* __)__         
   *-- inserts the element at the given index, shifting elements to the right.*
-  * list.__extend(__ *list2* __)__ 
+  * list.__extend(__ *list2* __)__      
   *adds the elements in list2 to the end of the list. Using + or += on a list is similar to using extend().*
-  * list.__index(__ *elem* __)__ 
+  * list.__index(__ *elem* __)__      
   *-- searches for the given element from the start of the list and returns its index. Throws a ValueError if the element does not appear (use "in" to check without a ValueError).*
-  * list.__remove(__ *elem* __)__ 
+  * list.__remove(__ *elem* __)__       
   *-- searches for the first instance of the given element and removes it (throws ValueError if not present)*
-  * list.__sort()__ 
+  * list.__sort()__       
   *-- sorts the list in place (does not return it). (The sorted() function shown below is preferred.)*
-  * list.__reverse()__ 
+  * list.__reverse()__       
   *-- reverses the list in place (does not return it)*
-  * list.__pop(__ index __)__ 
+  * list.__pop(__ index __)__       
   *-- removes and returns the element at the given index. Returns the rightmost element if index is omitted (roughly the opposite of append()).*
-  * list.__remove(__ index __)__ 
-  *-- removes and returns the element at the given index. Returns the rightmost element if index is omitted (roughly the opposite of append()).*
+  * list.__remove(__ index __)__        
+  *-- removes and at the given index.*
+
 * Contrairement à la classe str, la classe list vous permet de remplacer un élément par un autre. Les listes sont en effet des types dits mutables.
 * Une liste est une séquence mutable pouvant contenir plusieurs autres objets.
 * Une liste se construit ainsi : liste = [element1, element2, elementN].
 * On peut insérer des éléments dans une liste à l'aide des méthodes append, insert et extend.
 * On peut supprimer des éléments d'une liste grâce au mot-clé del ou à la méthode remove.
 * Un tuple est une séquence pouvant contenir des objets. À la différence de la liste, le tuple ne peut être modifié une fois créé.
+
+### Class Disctionnaire
+
+<p align="center">   
+<img src='https://developers.google.com/edu/python/images/dict.png' alt='Dictionnaire Class' />
+</p>
+
+
+````
+  dictionnaire = {} or new Dict()
+  set = {1,"test",[],{}} #Pour créer des SETs
+  
+  for cle in fruits:
+  for cle in fruits.keys():
+  for valeur in fruits.values():
+  for cle, valeur in fruits.items():
+````
+
+* Un dictionnaire est un objet conteneur associant des clés à des valeurs.
+* Pour créer un dictionnaire, on utilise la syntaxe dictionnaire = {cle1:valeur1, cle2:valeur2, cleN:valeurN}.
+* On peut ajouter ou remplacer un élément dans un dictionnaire : dictionnaire[cle] = valeur.
+* On peut supprimer une clé (et sa valeur correspondante) d'un dictionnaire en utilisant, au choix, le mot-clé del ou la méthode pop.
+* On peut parcourir un dictionnaire grâce aux méthodes keys (parcourt les clés), values (parcourt les valeurs) ou items (parcourt les couples clé-valeur).
+* On peut capturer les paramètres nommés passés à une fonction en utilisant cette syntaxe : def fonction_inconnue(**parametres_nommes): (les paramètres nommés se retrouvent dans le dictionnaire parametres_nommes).
