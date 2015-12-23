@@ -33,10 +33,12 @@
   sorted(etudiants, key=attrgetter("moyenne"))
 ````
 
-Le tri en Python se fait grâce à la méthode de liste sort, qui modifie la liste d'origine, et la fonction sorted, qui ne modifie pas la liste (ou la séquence) passée en paramètre ;
-On peut spécifier des fonctions clés grâce à l'argument key. Ces fonctions sont appelées pour chaque élément de la séquence à trier, et retournent le critère du tri ;
-Le module operator propose les fonctions itemgetter et attrgetter qui peuvent être très utiles en tant que fonction clés, si on veut trier une liste de tuples ou une liste d'objets selon un attribut ;
-Le tri en Python est « stable », c'est-à-dire que l'ordre de deux éléments dans la liste n'est pas modifié s'ils sont égaux. Cette propriété permet le chaînage de tri.
+* Le tri en Python se fait grâce à la méthode de liste sort, qui modifie la liste d'origine, et la fonction sorted, qui ne modifie pas la liste (ou la séquence) passée en paramètre ;
+* On peut spécifier des fonctions clés grâce à l'argument key. Ces fonctions sont appelées pour chaque élément de la séquence à trier, et retournent le critère du tri ;
+* Le module operator propose les fonctions itemgetter et attrgetter qui peuvent être très utiles en tant que fonction clés, si on veut * trier une liste de tuples ou une liste d'objets selon un attribut ;
+* Le tri en Python est « stable », c'est-à-dire que l'ordre de deux éléments dans la liste n'est pas modifié s'ils sont égaux. Cette propriété permet le chaînage de tri.    
+
+
 ## Les modules et les namespaces
 
 ````
@@ -95,10 +97,17 @@ Le tri en Python est « stable », c'est-à-dire que l'ordre de deux éléments 
 
 * Les méthodes spéciales permettent d'influencer la manière dont Python accède aux attributs d'une instance et réagit à certains opérateurs ou conversions.
 * Les méthodes spéciales sont toutes entourées de deux signes « souligné » (_).
-* Les méthodes **\__getattr\__**, **\__setattr\__** et **\__delattr\__** contrôlent l'accès aux attributs de l'instance.
-* Les méthodes **\__getitem\__**, **\__setitem\__** et **\__delitem\__** surchargent l'indexation ([]).
-* Les méthodes **\__add\__**, **\__sub\__**, **\__mul\__**… surchargent les opérateurs mathématiques.
-* Les méthodes **\__eq\__**, **\__ne\__**, **\__gt\__**… surchargent les opérateurs de comparaison.
+* Les méthodes ````__getattr__, __setattr__ et __delattr__```` contrôlent l'accès aux attributs de l'instance.
+* Les méthodes ````__getitem__, __setitem__ et __delitem__```` surchargent l'indexation ([]).
+* Les méthodes ````__add__, __sub__, __mul__```` … surchargent les opérateurs mathématiques.
+* Les méthodes ````__eq__, __ne__, __gt__```` … surchargent les opérateurs de comparaison.
+
+* L'héritage permet à une classe d'hériter du comportement d'une autre en reprenant ses méthodes.
+* La syntaxe de l'héritage est class ````NouvelleClasse(ClasseMere):````.
+* On peut accéder aux méthodes de la classe mère directement via la syntaxe : ````ClasseMere.methode(self)````.
+* L'héritage multiple permet à une classe d'hériter de plusieurs classes mères.
+* La syntaxe de l'héritage multiple s'écrit donc de la manière suivante : ````class NouvelleClasse(ClasseMere1, ClasseMere2,nClasseMereN):````.
+* Les exceptions définies par Python sont ordonnées selon une hiérarchie d'héritage.
 
 ### Class String
 
@@ -215,8 +224,33 @@ Le tri en Python est « stable », c'est-à-dire que l'ordre de deux éléments 
 ````
 
 * Un dictionnaire est un objet conteneur associant des clés à des valeurs.
-* Pour créer un dictionnaire, on utilise la syntaxe dictionnaire = {cle1:valeur1, cle2:valeur2, cleN:valeurN}.
-* On peut ajouter ou remplacer un élément dans un dictionnaire : dictionnaire[cle] = valeur.
+* Pour créer un dictionnaire, on utilise la syntaxe ````dictionnaire = {cle1:valeur1, cle2:valeur2, cleN:valeurN}````.
+* On peut ajouter ou remplacer un élément dans un dictionnaire : ````dictionnaire[cle] = valeur````.
 * On peut supprimer une clé (et sa valeur correspondante) d'un dictionnaire en utilisant, au choix, le mot-clé del ou la méthode pop.
 * On peut parcourir un dictionnaire grâce aux méthodes keys (parcourt les clés), values (parcourt les valeurs) ou items (parcourt les couples clé-valeur).
-* On peut capturer les paramètres nommés passés à une fonction en utilisant cette syntaxe : def fonction_inconnue(**parametres_nommes): (les paramètres nommés se retrouvent dans le dictionnaire parametres_nommes).
+* On peut capturer les paramètres nommés passés à une fonction en utilisant cette syntaxe : ````def fonction_inconnue(**parametres_nommes):```` (les paramètres nommés se retrouvent dans le dictionnaire parametres_nommes).
+
+## Les générateurs et les itérateurs
+
+* Quand on utilise la boucle for element in sequence:, un itérateur de cette séquence permet de la parcourir.
+* On peut récupérer l'itérateur d'une séquence grâce à la fonction ````iter````.
+* Une séquence renvoie l'itérateur permettant de la parcourir grâce à la méthode spéciale ````__iter__````.
+* Un itérateur possède une méthode spéciale, ````__next__````, qui renvoie le prochain élément à parcourir ou lève l'exception ````StopIteration```` qui arrête la boucle.
+* Les générateurs permettent de créer plus simplement des itérateurs.
+* Ce sont des fonctions utilisant le mot-clé ````yield```` suivi de la valeur à transmettre à la boucle.
+
+```` 
+  def intervalle(borne_inf, borne_sup):
+      """Générateur parcourant la série des entiers entre borne_inf et borne_sup.
+      Notre générateur doit pouvoir "sauter" une certaine plage de nombres
+      en fonction d'une valeur qu'on lui donne pendant le parcours. La
+      valeur qu'on lui passe est la nouvelle valeur de borne_inf.
+      
+      Note: borne_inf doit être inférieure à borne_sup"""
+      borne_inf += 1
+      while borne_inf < borne_sup:
+          valeur_recue = (yield borne_inf)
+          if valeur_recue is not None: # Notre générateur a reçu quelque chose
+              borne_inf = valeur_recue
+          borne_inf += 1
+```` 
