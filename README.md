@@ -1,5 +1,31 @@
 # Python-Tutorial 
 
+## Les modules et les namespaces
+
+````
+  import math as mathematiques
+  help('mathematiques')
+  from math import fabs
+  
+  # Savoir si le fichier est importé ou s'il est le main
+  if __name__ == "__main__":
+````
+* On peut écrire les programmes Python dans des fichiers portant l'extension **````.py````**.
+* On peut créer des fichiers contenant des modules pour séparer le code.
+* On peut créer des répertoires contenant des packages pour hiérarchiser un programme.
+
+## Les fonctions
+
+````
+  def name(arg = arg1, arg2 = arg2, arg3 = arg3):
+    """ Doc source de la fonction """
+    return 
+    
+  name(arg2 = 2, arg1 = 1)
+  
+  def fonction_inconnue(nom, prenom, *commentaires): # * pour un nombre d'arguments variable
+````
+
 ## Les fonctions lambda et sorted
 
 ````
@@ -38,32 +64,6 @@
 * Le module operator propose les fonctions itemgetter et attrgetter qui peuvent être très utiles en tant que fonction clés, si on veut * trier une liste de tuples ou une liste d'objets selon un attribut ;
 * Le tri en Python est « stable », c'est-à-dire que l'ordre de deux éléments dans la liste n'est pas modifié s'ils sont égaux. Cette propriété permet le chaînage de tri.    
 
-
-## Les modules et les namespaces
-
-````
-  import math as mathematiques
-  help('mathematiques')
-  from math import fabs
-  
-  # Savoir si le fichier est importé ou s'il est le main
-  if __name__ == "__main__":
-````
-* On peut écrire les programmes Python dans des fichiers portant l'extension **````.py````**.
-* On peut créer des fichiers contenant des modules pour séparer le code.
-* On peut créer des répertoires contenant des packages pour hiérarchiser un programme.
-
-## Les fonctions
-
-````
-  def name(arg = arg1, arg2 = arg2, arg3 = arg3):
-    """ Doc source de la fonction """
-    return 
-    
-  name(arg2 = 2, arg1 = 1)
-  
-  def fonction_inconnue(nom, prenom, *commentaires): # * pour un nombre d'arguments variable
-````
 
 ## Les exeptions et assertions
 
