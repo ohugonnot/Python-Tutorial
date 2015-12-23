@@ -1,11 +1,42 @@
 # Python-Tutorial 
 
-## Les fonctions lambda
+## Les fonctions lambda et sorted
 
 ````
   f = lambda x: x * x
+  
+  >>> sorted(etudiants, key=lambda colonnes: colonnes[2])
+  [
+      ('Thomas', 11, 12), 
+      ('Charles', 12, 15), 
+      ('Damien', 12, 15), 
+      ('Clément', 14, 16),
+      ('Oriane', 14, 18)
+  ]
+  >>>
+  
+  >>> sorted(etudiants, key=lambda etudiant: etudiant.age, reverse=True)
+  [
+      <Étudiant Clément (âge=14, moyenne=16)>,
+      <Étudiant Oriane (âge=14, moyenne=18)>,
+      <Étudiant Charles (âge=12, moyenne=15)>,
+      <Étudiant Damien (âge=12, moyenne=15)>,
+      <Étudiant Thomas (âge=11, moyenne=12)>
+  ]
+  >>>
+  
+  // Pour les listes volumineuses
+  from operator import itemgetter
+  sorted(etudiants, key=itemgetter(2))
+  
+  from operator import attrgetter
+  sorted(etudiants, key=attrgetter("moyenne"))
 ````
 
+Le tri en Python se fait grâce à la méthode de liste sort, qui modifie la liste d'origine, et la fonction sorted, qui ne modifie pas la liste (ou la séquence) passée en paramètre ;
+On peut spécifier des fonctions clés grâce à l'argument key. Ces fonctions sont appelées pour chaque élément de la séquence à trier, et retournent le critère du tri ;
+Le module operator propose les fonctions itemgetter et attrgetter qui peuvent être très utiles en tant que fonction clés, si on veut trier une liste de tuples ou une liste d'objets selon un attribut ;
+Le tri en Python est « stable », c'est-à-dire que l'ordre de deux éléments dans la liste n'est pas modifié s'ils sont égaux. Cette propriété permet le chaînage de tri.
 ## Les modules et les namespaces
 
 ````
@@ -61,6 +92,13 @@
 * Chaque classe définit certaines fonctions, appelées méthodes, qui seront accessibles depuis l'objet grâce à ````objet.methode(arguments)````.
 * On peut directement accéder à un caractère d'une chaîne grâce au code suivant : ````chaine[position_dans_la_chaine]````.
 * Il est tout à fait possible de sélectionner une partie de la chaîne grâce au code suivant : ````chaine[indice_debut:indice_fin]````.
+
+* Les méthodes spéciales permettent d'influencer la manière dont Python accède aux attributs d'une instance et réagit à certains opérateurs ou conversions.
+* Les méthodes spéciales sont toutes entourées de deux signes « souligné » (_).
+* Les méthodes **\__getattr\__**, **\__setattr\__** et **\__delattr\__** contrôlent l'accès aux attributs de l'instance.
+* Les méthodes **\__getitem\__**, **\__setitem\__** et **\__delitem\__** surchargent l'indexation ([]).
+* Les méthodes **\__add\__**, **\__sub\__**, **\__mul\__**… surchargent les opérateurs mathématiques.
+* Les méthodes **\__eq\__**, **\__ne\__**, **\__gt\__**… surchargent les opérateurs de comparaison.
 
 ### Class String
 
