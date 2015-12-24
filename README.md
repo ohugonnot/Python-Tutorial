@@ -147,11 +147,13 @@ not or and	Logical operators
 * Les méthodes ````__eq__, __ne__, __gt__```` … surchargent les opérateurs de comparaison.
 
 -----
+
 *	````__init__ ( self [,args...] )```` -> Constructor (with any optional arguments) -> Sample Call : obj = className(args)
 *	````__del__( self )```` -> Destructor, deletes an object -> Sample Call : del obj
 *	````__repr__( self )```` -> Evaluatable string representation -> Sample Call : repr(obj)
-*	````__str__( self )```` -> Printable string representation -> Sample Call : str(obj)
+*	````__str__( self )```` -> Printable string representation -> Sample Call : str(obj)     
 *	````__cmp__ ( self, x )```` -> Object comparison -> Sample Call : cmp(obj, x)
+
 -----
 
 * L'héritage permet à une classe d'hériter du comportement d'une autre en reprenant ses méthodes.
