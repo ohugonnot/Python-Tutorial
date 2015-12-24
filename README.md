@@ -1,5 +1,55 @@
 # Python-Tutorial 
 
+Python has five standard data types −
+
+* __Numbers__
+* __String__
+* __List__
+* __Tuple__
+* __Dictionary__
+
+------------
+
+* ````int(x [,base])````  -> Converts x to an integer. base specifies the base if x is a string.
+* ````long(x [,base] )````  -> Converts x to a long integer. base specifies the base if x is a string.
+* ````float(x)````  -> Converts x to a floating-point number.
+* ````complex(real```` [,imag])  -> Creates a complex number.
+* ````str(x)````  -> Converts object x to a string representation.
+* ````repr(x)````  -> Converts object x to an expression string.
+* ````eval(str)````  -> Evaluates a string and returns an object.
+* ````tuple(s)````  -> Converts s to a tuple.
+* ````list(s)````  -> Converts s to a list.
+* ````set(s)````  -> Converts s to a set.
+* ````dict(d)````  -> Creates a dictionary. d must be a sequence of (key,value) tuples.
+* ````frozenset(s)````  -> Converts s to a frozen set.
+* ````chr(x)````  -> Converts an integer to a character.
+* ````unichr(x)````  -> Converts an integer to a Unicode character.
+* ````ord(x)````  -> Converts a single character to its integer value.
+* ````hex(x)````  ->Converts an integer to a hexadecimal string.
+* ````oct(x)````  -> Converts an integer to an octal string.
+
+````
+**	Exponentiation (raise to the power)
+~ + -	Ccomplement, unary plus and minus (method names for the last two are +@ and -@)
+* / % //	Multiply, divide, modulo and floor division
++ -	Addition and subtraction
+<= < > >=	Comparison operators
+<> == !=	Equality operators
+= %= /= //= -= += *= **=	Assignment operators
+is is not	Identity operators
+in not in	Membership operators
+not or and	Logical operators
+````
+
+### Random Number Functions
+
+* ````choice(seq)````  -> A random item from a list, tuple, or string.
+* ````randrange ([start,] stop [,step])````  -> A randomly selected element from range(start, stop, step)
+* ````random()````  -> A random float r, such that 0 is less than or equal to r and r is less than 1
+* ````seed([x])````  -> Sets the integer starting value used in generating random numbers. Call this function before calling any other random module function. Returns None.
+* ````shuffle(lst)````  -> Randomizes the items of a list in place. Returns None.
+* ````uniform(x, y)````  -> A random float r, such that x is less than or equal to r and r is less than y
+
 ## Les modules et les namespaces
 
 ````
@@ -89,18 +139,20 @@
 
 ## Les Objets
 
-* Les variables utilisées jusqu'ici sont en réalité des objets.
-* Les types de données utilisés jusqu'ici sont en fait des classes. Chaque objet est modelé sur une classe.
-* Chaque classe définit certaines fonctions, appelées méthodes, qui seront accessibles depuis l'objet grâce à ````objet.methode(arguments)````.
-* On peut directement accéder à un caractère d'une chaîne grâce au code suivant : ````chaine[position_dans_la_chaine]````.
-* Il est tout à fait possible de sélectionner une partie de la chaîne grâce au code suivant : ````chaine[indice_debut:indice_fin]````.
-
 * Les méthodes spéciales permettent d'influencer la manière dont Python accède aux attributs d'une instance et réagit à certains opérateurs ou conversions.
 * Les méthodes spéciales sont toutes entourées de deux signes « souligné » (_).
-* Les méthodes ````__getattr__, __setattr__ et __delattr__```` contrôlent l'accès aux attributs de l'instance.
+* Les méthodes ````__getattr__, __setattr__,  __hasattr__ et __delattr__```` contrôlent l'accès aux attributs de l'instance.
 * Les méthodes ````__getitem__, __setitem__ et __delitem__```` surchargent l'indexation ([]).
 * Les méthodes ````__add__, __sub__, __mul__```` … surchargent les opérateurs mathématiques.
 * Les méthodes ````__eq__, __ne__, __gt__```` … surchargent les opérateurs de comparaison.
+
+-----
+*	````__init__ ( self [,args...] )```` -> Constructor (with any optional arguments) -> Sample Call : obj = className(args)
+*	````__del__( self )```` -> Destructor, deletes an object -> Sample Call : del obj
+*	````__repr__( self )```` -> Evaluatable string representation -> Sample Call : repr(obj)
+*	````__str__( self )```` -> Printable string representation -> Sample Call : str(obj)*
+*	````__cmp__ ( self, x )```` -> Object comparison -> Sample Call : cmp(obj, x)
+-----
 
 * L'héritage permet à une classe d'hériter du comportement d'une autre en reprenant ses méthodes.
 * La syntaxe de l'héritage est class ````NouvelleClasse(ClasseMere):````.
@@ -115,6 +167,15 @@
 <img src='https://developers.google.com/edu/python/images/hello.png' alt='String Class' />
 </p>
 
+* ````+````	-> Concatenation - Adds values on either side of the operator	a + b will give HelloPython
+* ````*````	-> Repetition - Creates new strings, concatenating multiple copies of the same string	a*2 will give -HelloHello
+* ````[]````	-> Slice - Gives the character from the given index	a[1] will give e
+* ````[ : ]````	-> Range Slice - Gives the characters from the given range	a[1:4] will give ell
+* ````in````	->	Membership - Returns true if a character exists in the given string	H in a will give 1
+* ````not in````	->	Membership - Returns true if a character does not exist in the given string	M not in a will give 1
+
+
+
 ````
   chaine = str()
   chaine = "Hello"
@@ -122,8 +183,14 @@
   text = ("%d little pigs come out or I'll %s and %s and %s" % (3, 'huff', 'puff', 'blow down'))
 ````
 * __String Methode()__
-  * s.__lower()__ / s.__upper()__         
+  * s.__lower()__ / s.__upper()__     
   *-- returns the lowercase or uppercase version of the string*
+  * s.__capitalize()__     
+  *-- Capitalizes first letter of string
+  * s.__center(__ *width, fillchar* __)__      
+  *-- Returns a space-padded string with the original string centered to a total of width columns.
+  * s.__count(__ *str, beg= 0,end=len(string)* __)__    
+  *-- Counts how many times str occurs in string or in a substring of string if starting index beg and ending index end are given.
   * s.__strip()__       
   *-- returns a string with whitespace removed from the start and end**
   * s.__isalpha()__ / s.__isdigit()__ / s.__isspace()__ ...            
@@ -145,10 +212,16 @@
 <img src='https://developers.google.com/edu/python/images/list1.png' alt='List Class' />
 </p>
 
+* ````len([1, 2, 3]) =	3````	Length
+* ````[1, 2, 3] + [4, 5, 6] =	[1, 2, 3, 4, 5, 6]````	Concatenation
+* ````['Hi!'] * 4	= ['Hi!', 'Hi!', 'Hi!', 'Hi!']````	Repetition
+* ````3 in [1, 2, 3] =	True````	Membership
+* ````for x in [1, 2, 3]: print x =	1 2 3````	Iteration
+* ````cmp(list1, list2)```` -> Compares elements of both lists.
+* ````min(list), max(list)```` -> Returns item from the list with min or max value.
+
+
 ````
-  ma_liste = [1, 2, 3, 4, 5] # Une liste avec cinq objets
-  tuple = (1,2,3,4,5)
-  
   squares = [1, 4, 9, 16]
   sum = 0
   for num in squares:
@@ -199,6 +272,8 @@
   * list.__remove(__ index __)__        
   *-- removes and at the given index.*
 
+------
+
 * Contrairement à la classe str, la classe list vous permet de remplacer un élément par un autre. Les listes sont en effet des types dits mutables.
 * Une liste est une séquence mutable pouvant contenir plusieurs autres objets.
 * Une liste se construit ainsi : liste = [element1, element2, elementN].
@@ -206,12 +281,23 @@
 * On peut supprimer des éléments d'une liste grâce au mot-clé del ou à la méthode remove.
 * Un tuple est une séquence pouvant contenir des objets. À la différence de la liste, le tuple ne peut être modifié une fois créé.
 
+### Class Tuple
+
+A tuple is a sequence of immutable Python objects. Tuples are sequences, just like lists. The differences between tuples and lists are, the tuples cannot be changed unlike lists and tuples use parentheses, whereas lists use square brackets.
+
+````
+  tup1 = ('physics', 'chemistry', 1997, 2000);
+  tup2 = (1, 2, 3, 4, 5 );
+  tup3 = "a", "b", "c", "d";
+````
+
+__All Same as Liste__
+
 ### Class Disctionnaire
 
 <p align="center">   
 <img src='https://developers.google.com/edu/python/images/dict.png' alt='Dictionnaire Class' />
 </p>
-
 
 ````
   dictionnaire = {} or new Dict()
@@ -222,6 +308,30 @@
   for valeur in fruits.values():
   for cle, valeur in fruits.items():
 ````
+
+* Dict.method()
+  * dict.__clear()__     
+  *-- Removes all elements of dictionary dict
+  * dict.__copy()__     
+  *-- Returns a shallow copy of dictionary dict
+  * dict.__fromkeys()__     
+  *-- Create a new dictionary with keys from seq and values set to value.
+  * dict.__get(__ *key, default=None* __)__     
+  *-- For key key, returns value or default if key not in dictionary
+  * dict.__has_key(__ *key* __)__    
+  *-- Returns true if key in dictionary dict, false otherwise
+  * dict.__items()__      
+  *-- Returns a list of dict's (key, value) tuple pairs
+  * dict.__keys()__    
+  *-- Returns list of dictionary dict's keys
+  * dict.__setdefault(__ *key, default=None* __)__     
+  *-- Similar to get(), but will set dict[key]=default if key is not already in dict
+  * dict.__update(__ *dict2* __)__     
+  *-- Adds dictionary dict2's key-values pairs to dict
+  * dict.__values()__      
+  *-- Returns list of dictionary dict's values
+
+------
 
 * Un dictionnaire est un objet conteneur associant des clés à des valeurs.
 * Pour créer un dictionnaire, on utilise la syntaxe ````dictionnaire = {cle1:valeur1, cle2:valeur2, cleN:valeurN}````.
@@ -254,3 +364,53 @@
               borne_inf = valeur_recue
           borne_inf += 1
 ```` 
+
+## File 
+
+````
+  file object = open(file_name [, access_mode][, buffering])
+  
+  # Rename a file from test1.txt to test2.txt
+  os.rename( "test1.txt", "test2.txt" )
+  
+  # Delete file test2.txt
+  os.remove("text2.txt")
+  
+  # Pour éviter de close mot clef With
+  >>> with open('fichier.txt', 'r') as mon_fichier:
+  ...     texte = mon_fichier.read()
+  ... 
+  >>>
+````
+
+* ````r````	Opens a file for reading only. The file pointer is placed at the beginning of the file. This is the default mode.
+* ````rb````	Opens a file for reading only in binary format. The file pointer is placed at the beginning of the file. This is the default mode.
+* ````r+````	Opens a file for both reading and writing. The file pointer placed at the beginning of the file.
+* ````rb+````	Opens a file for both reading and writing in binary format. The file pointer placed at the beginning of the file.
+* ````w````	Opens a file for writing only. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+* ````wb````	Opens a file for writing only in binary format. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+* ````w+````	Opens a file for both writing and reading. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+* ````wb+````	Opens a file for both writing and reading in binary format. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+* ````a````	Opens a file for appending. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+* ````ab````	Opens a file for appending in binary format. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+* ````a+````	Opens a file for both appending and reading. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+* ````ab+````	Opens a file for both appending and reading in binary format. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+
+----
+
+* file.__closed__	-> Returns true if file is closed, false otherwise.
+* file.__mode__	-> Returns access mode with which file was opened.
+* file.__name__	-> Returns name of the file.
+* file.__softspace__	-> Returns false if space explicitly required with print, true otherwise
+* file.__write(__ *string* __)__
+* file.__read(__ *[count]* __)__
+* file.__tell()__  -> method tells you the current position within the file; in other words, the next read or write will occur at that many bytes from the beginning of the file.
+* file.__seek(__ *offset[, from]* __)__  -> method changes the current file position. The offset argument indicates the number of bytes to be moved. The from argument specifies the reference position from where the bytes are to be moved.
+
+-- 
+
+* On peut ouvrir un fichier en utilisant la fonction open prenant en paramètre le chemin vers le fichier et le mode d'ouverture.
+* On peut lire dans un fichier en utilisant la méthode ````read````.
+* On peut écrire dans un fichier en utilisant la méthode ````write````.
+* Un fichier doit être refermé après usage en utilisant la méthode ````close````.
+* Le module ````pickle```` est utilisé pour enregistrer des objets Python dans des fichiers et les recharger ensuite.
