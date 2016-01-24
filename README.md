@@ -28,7 +28,7 @@ Python has five standard data types −
 * ````hex(x)````  ->Converts an integer to a hexadecimal string.
 * ````oct(x)````  -> Converts an integer to an octal string.
 
-````
+````python
 **	Exponentiation (raise to the power)
 ~ + -	Ccomplement, unary plus and minus (method names for the last two are +@ and -@)
 * / % //	Multiply, divide, modulo and floor division
@@ -52,7 +52,7 @@ not or and	Logical operators
 
 ## Les modules et les namespaces
 
-````
+````python
   import math as mathematiques
   help('mathematiques')
   from math import fabs
@@ -66,7 +66,7 @@ not or and	Logical operators
 
 ## Les fonctions
 
-````
+````python
   def name(arg = arg1, arg2 = arg2, arg3 = arg3):
     """ Doc source de la fonction """
     return 
@@ -78,7 +78,7 @@ not or and	Logical operators
 
 ## Les fonctions lambda et sorted
 
-````
+````python
   f = lambda x: x * x
   
   >>> sorted(etudiants, key=lambda colonnes: colonnes[2])
@@ -117,7 +117,7 @@ not or and	Logical operators
 
 ## Les exeptions et assertions
 
-````
+````python
   try:
       # Bloc de test
   except type_de_l_exception as exception_retournee:
@@ -178,7 +178,7 @@ not or and	Logical operators
 
 
 
-````
+````python
   chaine = str()
   chaine = "Hello"
   chaine[1:4] #is 'ell' -- chars starting at index 1 and extending up to but not including index 4
@@ -223,7 +223,7 @@ not or and	Logical operators
 * ````min(list), max(list)```` -> Returns item from the list with min or max value.
 
 
-````
+````python
   squares = [1, 4, 9, 16]
   sum = 0
   for num in squares:
@@ -287,7 +287,7 @@ not or and	Logical operators
 
 A tuple is a sequence of immutable Python objects. Tuples are sequences, just like lists. The differences between tuples and lists are, the tuples cannot be changed unlike lists and tuples use parentheses, whereas lists use square brackets.
 
-````
+````python
   tup1 = ('physics', 'chemistry', 1997, 2000);
   tup2 = (1, 2, 3, 4, 5 );
   tup3 = "a", "b", "c", "d";
@@ -301,7 +301,7 @@ __All Same as Liste__
 <img src='https://developers.google.com/edu/python/images/dict.png' alt='Dictionnaire Class' />
 </p>
 
-````
+````python
   dictionnaire = {} or new Dict()
   set = {1,"test",[],{}} #Pour créer des SETs
   
@@ -351,7 +351,7 @@ __All Same as Liste__
 * Les générateurs permettent de créer plus simplement des itérateurs.
 * Ce sont des fonctions utilisant le mot-clé ````yield```` suivi de la valeur à transmettre à la boucle.
 
-```` 
+````python
   def intervalle(borne_inf, borne_sup):
       """Générateur parcourant la série des entiers entre borne_inf et borne_sup.
       Notre générateur doit pouvoir "sauter" une certaine plage de nombres
@@ -369,7 +369,7 @@ __All Same as Liste__
 
 ## File 
 
-````
+````python
   file object = open(file_name [, access_mode][, buffering])
   
   # Rename a file from test1.txt to test2.txt
