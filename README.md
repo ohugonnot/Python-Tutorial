@@ -6,6 +6,7 @@ Python has five standard data types −
 * __Bool__
 * __String__
 * __List__
+* __Set__
 * __Tuple__
 * __Dictionary__
 
