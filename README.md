@@ -3,6 +3,7 @@
 Python has five standard data types −
 
 * __Numbers__
+* __Bool__
 * __String__
 * __List__
 * __Tuple__
@@ -14,6 +15,7 @@ Python has five standard data types −
 * ````long(x [,base] )````  -> Converts x to a long integer. base specifies the base if x is a string.
 * ````float(x)````  -> Converts x to a floating-point number.
 * ````complex(real```` [,imag])  -> Creates a complex number.
+* ````bool(x)````  -> Convert x to a bool.
 * ````str(x)````  -> Converts object x to a string representation.
 * ````repr(x)````  -> Converts object x to an expression string.
 * ````eval(str)````  -> Evaluates a string and returns an object.
