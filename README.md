@@ -8,7 +8,7 @@ Python has five standard data types −
 * __List__  <--- list()
 * __Set__  <--- list unique set()
 * __Tuple__
-* __Dictionary__   <--- list avec des key non ordonnées en texte
+* __Dictionary__   <--- list avec des key non ordonnées en texte {} resemble à du json
 * __Object__   <--- object classique
 
 ------------
