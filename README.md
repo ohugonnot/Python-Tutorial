@@ -9,6 +9,7 @@ Python has five standard data types −
 * __Set__
 * __Tuple__
 * __Dictionary__
+* __Object__
 
 ------------
 
